@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 from datetime import date
 
-
+# Modelo de dados desejado para saída da extração de informações de nota fiscal
 class ExtracaoOutput(BaseModel):
     descricao_servico: str = Field(description="Descrição detalhada dos serviços prestados.")
     valor_servico: float = Field(description="Valor do serviço a ser pago.")

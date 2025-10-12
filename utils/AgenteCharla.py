@@ -9,11 +9,15 @@ from pydantic_ai.providers.google import GoogleProvider
 
 from utils.BaseModel import ExtracaoOutput
 
+# Carrega variáveis de ambiente do arquivo .env
 load_dotenv()
+
+# Obtém e valida o caminho das credenciais do Google
 credenciais_caminho = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 if not credenciais_caminho or not os.path.exists(credenciais_caminho):
     raise FileNotFoundError("Arquivo de credenciais não encontrado ou variável de ambiente não definida.")
 
+# Carrega e valida as credenciais JSON
 with open(credenciais_caminho, "r") as f:
     credenciais = json.load(f)
 
@@ -31,24 +35,23 @@ def criar_agente_charla():
         Exception: Se houver erro na criação das credenciais, provider, model ou agent
     """
     try:
-        # Criação das credenciais
+        # Configura credenciais do Google Cloud com escopo necessário
         credentials = service_account.Credentials.from_service_account_file(
             credenciais_caminho,
             scopes=['https://www.googleapis.com/auth/cloud-platform'],
         )
         
-        # Validação das credenciais
         if not credentials:
             raise ValueError("Falha ao carregar as credenciais do Google")
         
-        # Criação do provider e model
+        # Inicializa provider e modelo Gemini
         provider = GoogleProvider(credentials=credentials, project=credenciais['project_id'])
         model = GoogleModel('gemini-2.5-flash', provider=provider)
         
-        # Validação do model
         if not model:
             raise ValueError("Falha ao criar o modelo Google Gemini")
 
+        # Prompt do sistema para extração de dados de notas fiscais
         system_prompt= """
         Você é um agente de IA especialista em processamento de documentos fiscais brasileiros. Sua principal tarefa é analisar o conteúdo de uma Nota Fiscal de Serviço em formato de documento (PDF), extrair informações cruciais e retorná-las em um formato estruturado, de acordo com o modelo Pydantic fornecido.
 
@@ -86,21 +89,20 @@ def criar_agente_charla():
         }
         """
         
-        # Criação do agente
+        # Cria agente com modelo configurado e schema de saída
         agent = Agent(
             model=model,
             system_prompt=system_prompt,
             output_type=ExtracaoOutput
         )
         
-        # Validação do agente criado
         if not agent:
             raise ValueError("Falha ao criar o agente de IA")
                  
         return agent
         
     except Exception as e:
-        # Log do erro e re-raise com contexto adicional
+        # Exibe erro com contexto adicional
         error_msg = f"Erro ao criar agente Charla: {str(e)}"
         raise Exception(error_msg) from e
 
