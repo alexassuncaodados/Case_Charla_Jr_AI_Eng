@@ -93,7 +93,7 @@ Resultado extraído:
   "descricao_servico": "MENSALIDADE EAD - EDUCAÇÃO SUPERIOR", 
   "valor_servico": 138.33,
   "numero_nf": 4365344,
-  "data_emissao": "2025-10-02",
+  "data_emissao": datetime.date(2025, 10, 2),
   "valor_total": 138.33,
   "cnpj": "04986320003139"
 }
@@ -104,7 +104,7 @@ Resultado extraído:
   "descricao_servico": "CONSULTORIA EM TI",
   "valor_servico": 1500.00,
   "numero_nf": 7891234,
-  "data_emissao": "2025-10-01", 
+  "data_emissao": datetime.date(2025, 10, 1), 
   "valor_total": 1500.00,
   "cnpj": "12345678000195"
 }
