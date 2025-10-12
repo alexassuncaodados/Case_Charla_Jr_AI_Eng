@@ -1,0 +1,13 @@
+
+# PydanticAI - Framework principal para IA
+pydantic-ai>=0.0.12
+
+# Pydantic - Validação de dados
+pydantic>=2.0.0
+
+# Google OAuth2 e credenciais
+google-auth>=2.0.0
+google-auth-oauthlib>=1.0.0
+
+# Gerenciamento de variáveis de ambiente
+python-dotenv>=1.0.0
