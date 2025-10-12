@@ -23,10 +23,6 @@ Sistema de extração automática de dados de Notas Fiscais de Serviço (NFSe) u
 ## Instalação
 
 1. **Clone o repositório**
-   ```bash
-   git clone <url-do-repositorio>
-   cd "Engenheiro de IA JR - Charla"
-   ```
 
 2. **Crie o ambiente virtual (Python >=3.13)**
    ```bash
