@@ -1,6 +1,7 @@
-# Extrator de Nota Fiscal com IA
+# Extrator de Nota Fiscal com IA 
+Este projeto foi desenvolvido como parte de um case técnico.
+Tem como proposta criar um sistema de extração automática de dados de Notas Fiscais de Serviço (NFSe) usando inteligência artificial Google Gemini com **processamento em lote**.
 
-Sistema de extração automática de dados de Notas Fiscais de Serviço (NFSe) usando inteligência artificial Google Gemini com **processamento em lote**.
 
 ## Funcionalidades
 
