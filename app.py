@@ -1,7 +1,6 @@
 # Importações necessárias
 import asyncio
 from utils.AgenteCharla import criar_agente_charla
-from utils.BaseModel import ExtracaoOutput
 
 from pydantic_ai import BinaryContent
 from pathlib import Path
