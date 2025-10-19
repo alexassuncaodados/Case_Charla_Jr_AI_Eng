@@ -39,6 +39,7 @@ def valida_agente_charla():
         provider = GoogleProvider(credentials=credentials, project=credenciais['project_id'])
         model = GoogleModel('gemini-2.5-flash', provider=provider)
         
+        
         if not model:
             raise ValueError("Falha ao criar o modelo Google Gemini")
 

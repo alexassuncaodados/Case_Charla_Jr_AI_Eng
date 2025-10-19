@@ -9,3 +9,6 @@ class ExtracaoOutput(BaseModel):
     data_emissao: date = Field(description="Data em que a nota fiscal foi emitida.")
     valor_total: float = Field(description="Valor total da nota fiscal (bruto).")
     cnpj: str = Field(description="CNPJ da empresa, contendo apenas números.")
+
+class Valida_nota(BaseModel):
+    validado: bool = Field(description='valida se o documento enviado é um nota fiscal ou não')
