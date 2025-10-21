@@ -1,9 +1,13 @@
 # Importações necessárias
 import asyncio
-from utils.AgenteCharla import criar_agente_charla
+from utils.Agente import criar_agente_charla
+# from utils.AgenteCharla import criar_agente_charla
+from utils.pdf_to_img_to_text import extrair_texto_de_pdf_scaneado
 
 from pydantic_ai import BinaryContent
 from pathlib import Path
+
+
 
 def main_sync():
     # Inicialização do agente de IA
@@ -36,10 +40,14 @@ def main_sync():
             print(f"\n--- Processando arquivo {i}/{len(arquivos_pdf)}: {arquivo_pdf.name} ---")
             
             try:
-                # Faz a extração de dados do PDF
-                resultado = await agent.run(
-                    [BinaryContent(arquivo_pdf.read_bytes(), media_type='application/pdf')]
-                )
+                # # Faz a extração de dados do PDF
+                # arquivobyte = arquivo_pdf.read_bytes()
+                # resultado = await agent.run(
+                #     [BinaryContent(arquivobyte, media_type='application/pdf')]
+                # )
+                arquivo = extrair_texto_de_pdf_scaneado(arquivo_pdf)
+                # print(arquivo)
+                resultado = await agent.run(arquivo)
                 
                 # Exibe o resultado no console
                 print("Resultado extraído:")
